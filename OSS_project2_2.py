@@ -4,7 +4,17 @@ def sort_dataset(dataset_df):
 	return dataset_df.sort_values(by='year')
 
 def split_dataset(dataset_df):	
-	#TODO: Implement this function
+	dataset_df_data = dataset_df.drop('salary', axis=1)
+	dataset_df_target = dataset_df['salary'] * 0.001
+
+	TRAIN_INDEX = 1718
+
+	X_train = dataset_df_data[:TRAIN_INDEX]
+	X_test = dataset_df_data[TRAIN_INDEX:]
+	Y_train = dataset_df_target[:TRAIN_INDEX]
+	Y_test = dataset_df_target[TRAIN_INDEX:]
+
+	return X_train, X_test, Y_train, Y_test
 
 def extract_numerical_cols(dataset_df):
 	#TODO: Implement this function
