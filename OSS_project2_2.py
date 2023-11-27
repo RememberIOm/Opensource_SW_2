@@ -1,6 +1,9 @@
 import pandas as pd
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.svm import SVR
 
 def sort_dataset(dataset_df):
 	return dataset_df.sort_values(by='year')
@@ -34,7 +37,13 @@ def train_predict_random_forest(X_train, Y_train, X_test):
 	return rf_reg.predict(X_test)
 
 def train_predict_svm(X_train, Y_train, X_test):
-	#TODO: Implement this function
+	svm_reg_pipe = make_pipeline(
+		StandardScaler(),
+		SVR()
+	)
+	svm_reg_pipe.fit(X_train, Y_train)
+
+	return svm_reg_pipe.predict(X_test)
 
 def calculate_RMSE(labels, predictions):
 	#TODO: Implement this function
