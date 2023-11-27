@@ -30,6 +30,14 @@ def top_players_cp(data_df):
 
     return data_top
 
+def cal_corr(data_df):
+    COLUMNS_PICK_1 = ['R', 'H', 'HR', 'RBI', 'SB', 'war', 'avg', 'OBP', 'SLG']
+    COLUMNS_PICK_2 = 'salary'
+
+    data_corr = [data_df[column].corr(data_df[COLUMNS_PICK_2]) for column in COLUMNS_PICK_1]
+
+    return data_corr
+
 
 data_df = pd.read_csv('2019_kbo_for_kaggle_v2.csv')
 
@@ -54,3 +62,12 @@ for i in range(len(CPS_PICK)):
     print("%s:\t%s" % (CPS_PICK[i], top_players_cp_list[i].values[0]))
 
 print()
+
+# Q3
+data_corr_list = cal_corr(data_df)
+COLUMNS_PICK_1 = ['R', 'H', 'HR', 'RBI', 'SB', 'war', 'avg', 'OBP', 'SLG']
+
+for column in range(len(COLUMNS_PICK_1)):
+    print("%s:\t%f" % (COLUMNS_PICK_1[column], data_corr_list[column]))
+
+print("가장 상관관계가 높은 변수는 %s이다." % COLUMNS_PICK_1[data_corr_list.index(max(data_corr_list))])
