@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.ensemble import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 
 def sort_dataset(dataset_df):
 	return dataset_df.sort_values(by='year')
@@ -27,7 +28,10 @@ def train_predict_decision_tree(X_train, Y_train, X_test):
 	return dt_reg.predict(X_test)
 
 def train_predict_random_forest(X_train, Y_train, X_test):
-	#TODO: Implement this function
+	rf_reg = RandomForestRegressor()
+	rf_reg.fit(X_train, Y_train)
+
+	return rf_reg.predict(X_test)
 
 def train_predict_svm(X_train, Y_train, X_test):
 	#TODO: Implement this function
