@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
@@ -46,7 +47,7 @@ def train_predict_svm(X_train, Y_train, X_test):
 	return svm_reg_pipe.predict(X_test)
 
 def calculate_RMSE(labels, predictions):
-	#TODO: Implement this function
+	return np.sqrt(np.mean((predictions - labels) ** 2))
 
 if __name__=='__main__':
 	#DO NOT MODIFY THIS FUNCTION UNLESS PATH TO THE CSV MUST BE CHANGED.
