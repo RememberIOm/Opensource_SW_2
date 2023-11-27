@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.ensemble import DecisionTreeRegressor
 
 def sort_dataset(dataset_df):
 	return dataset_df.sort_values(by='year')
@@ -20,7 +21,10 @@ def extract_numerical_cols(dataset_df):
 	return dataset_df[['age', 'G', 'PA', 'AB', 'R', 'H', '2B', '3B', 'HR', 'RBI', 'SB', 'CS', 'BB', 'HBP', 'SO', 'GDP', 'fly', 'war']]
 
 def train_predict_decision_tree(X_train, Y_train, X_test):
-	#TODO: Implement this function
+	dt_reg = DecisionTreeRegressor()
+	dt_reg.fit(X_train, Y_train)
+
+	return dt_reg.predict(X_test)
 
 def train_predict_random_forest(X_train, Y_train, X_test):
 	#TODO: Implement this function
