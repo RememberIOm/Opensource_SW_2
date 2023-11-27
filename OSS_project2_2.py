@@ -1,7 +1,7 @@
 import pandas as pd
 
 def sort_dataset(dataset_df):
-	#TODO: Implement this function
+	return dataset_df.sort_values(by='year')
 
 def split_dataset(dataset_df):	
 	#TODO: Implement this function
