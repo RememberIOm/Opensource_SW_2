@@ -17,7 +17,7 @@ def split_dataset(dataset_df):
 	return X_train, X_test, Y_train, Y_test
 
 def extract_numerical_cols(dataset_df):
-	#TODO: Implement this function
+	return dataset_df[['age', 'G', 'PA', 'AB', 'R', 'H', '2B', '3B', 'HR', 'RBI', 'SB', 'CS', 'BB', 'HBP', 'SO', 'GDP', 'fly', 'war']]
 
 def train_predict_decision_tree(X_train, Y_train, X_test):
 	#TODO: Implement this function
